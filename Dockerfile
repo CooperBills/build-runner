@@ -3,8 +3,10 @@ FROM google/cloud-sdk
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
 RUN apt-get update && apt-get install -y \
     curl \
-    nodejs \
     gnupg \
+    libssl-dev \
+    nodejs \
+    pkg-config \
     software-properties-common \
     wget \
     && rm -rf /var/lib/apt/lists/*
