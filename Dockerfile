@@ -13,15 +13,6 @@ RUN apt-get update && apt-get install -y \
     wget \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Curl
-RUN wget https://github.com/curl/curl/releases/download/curl-7_88_1/curl-7.88.1.tar.gz -O /tmp/curl.tar.gz \
-    && tar -xvf /tmp/curl.tar.gz -C /tmp \
-    && cd /tmp/curl-7.88.1 \
-    && ./configure --with-openssl \
-    && make \
-    && make install \
-    && rm -rf /tmp/curl*
-
 RUN wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O /usr/bin/cloud_sql_proxy \
     && chmod ugo+x /usr/bin/cloud_sql_proxy
 
@@ -30,6 +21,15 @@ RUN apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(ls
 RUN apt-get update && apt-get install -y \
     terraform \
     && rm -rf /var/lib/apt/lists/*
+
+# Install Newer Curl
+RUN wget https://github.com/curl/curl/releases/download/curl-7_88_1/curl-7.88.1.tar.gz -O /tmp/curl.tar.gz \
+    && tar -xvf /tmp/curl.tar.gz -C /tmp \
+    && cd /tmp/curl-7.88.1 \
+    && ./configure --with-openssl \
+    && make \
+    && make install \
+    && rm -rf /tmp/curl*
 
 RUN npm install -g @bazel/bazelisk
 
