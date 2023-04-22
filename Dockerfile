@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     ca-certificates \
     curl \
+    docker.io \
     gnupg \
     libapr1-dev \
     libssl-dev \
