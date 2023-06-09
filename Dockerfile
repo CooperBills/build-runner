@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y \
     npm \
     pkg-config \
     software-properties-common \
+    unzip \
     wget \
     && rm -rf /var/lib/apt/lists/*
 
