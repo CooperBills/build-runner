@@ -1,6 +1,7 @@
-FROM debian:bookworm
+# debian:bookworm as of 6/28/23
+FROM debian@sha256:e7072ef5bbeaca98db3056a7d944d5dfb7a44d47770d10d54ee3f5a61144f049
 
-# Install NodeJS and general dependencies
+# Install NodeJS, python, and general dependencies
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
 RUN apt-get update && apt-get install -y \
     apt-transport-https \
@@ -13,7 +14,10 @@ RUN apt-get update && apt-get install -y \
     libssl-dev \
     nodejs \
     npm \
+    pipx=1.1.0-1 \
     pkg-config \
+    python3=3.11.2-1+b1 \
+    python3-pip=23.0.1+dfsg-1 \
     software-properties-common \
     unzip \
     wget \
